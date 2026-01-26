@@ -60,7 +60,7 @@ def exec_oasis(params: str):
 def main():
     sk_map = parse_secret_keys(secret_keys)
     print(f"Imported {len(sk_map)} secret keys")
-    print(rofl_topup_term)
+
     while True:
         for wa in watch_addresses:
             a = wa.split(':', 1)
