@@ -1,9 +1,9 @@
+![Oasis Gardener](./docs/gardener.png)
+
 # Oasis Gardener
 
-A simple service that regularly tops up given accounts so they don't dry out.
-
-
-![Oasis Gardener](./docs/gardener.png)
+A simple service that regularly tops up given accounts so they don't dry out or
+ROFL machines so they don't expire.
 
 ## Installation and Setup
 
