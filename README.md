@@ -14,7 +14,10 @@ Requires locally installed [Oasis CLI] and [uv].
 
 ```shell
 cp .env.example .env
-# Edit .env: Change WATCH_ADDRESSES and SECRET_KEYS
+# Edit .env:
+# - Add monitoring addresses to WATCH_ADDRESSES
+# - Add monitoring of ROFL machines to WATCH_ROFL_MACHINES
+# - Add payment secret keys to SECRET_KEYS
 uv run main.py
 ```
 
