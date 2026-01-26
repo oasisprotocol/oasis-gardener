@@ -36,7 +36,7 @@ def import_wallet(pt: str, network: str, sk_map: dict[str, tuple[str, str]]) -> 
 
     # Pick the corresponding account.
     if f"{pt}-{network}" not in sk_map:
-        print(f" error: Secret key to fund ROFL machine not found.")
+        print(f" error: Secret key for {pt}-{network} not found.")
         return False
     algorithm, secret = sk_map[f"{pt}-{network}"]
 
@@ -70,8 +70,8 @@ def main():
             pt, network = (a[0] if '-' in a[0] else a[0]+"-mainnet").split('-')
 
             result = exec_oasis(f"account show {a[1]} --network {network} {"--paratime "+pt if pt!="consensus" else "--no-paratime"} --format json")
+            mOut = {}
             if result.returncode == 0 and result.stdout:
-                mOut = {}
                 try:
                     mOut = json.loads(result.stdout)
                 except json.JSONDecodeError as e:
@@ -115,8 +115,8 @@ def main():
             pt, network = (m[0] if '-' in m[0] else m[0]+"-mainnet").split('-')
 
             result = exec_oasis(f"rofl machine show {m[1]} --network {network} --paratime {pt} --format json")
+            mOut = {}
             if result.returncode == 0 and result.stdout:
-                mOut = {}
                 try:
                     mOut = json.loads(result.stdout)
                 except json.JSONDecodeError as e:
