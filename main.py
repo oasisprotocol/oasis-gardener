@@ -19,6 +19,7 @@ watch_rofl_machines = os.getenv('WATCH_ROFL_MACHINES', '').split(',')
 rofl_threshold = int(os.getenv('ROFL_THRESHOLD', 1800))
 rofl_topup_term = os.getenv('ROFL_TOPUP_TERM', "hour")
 rofl_topup_count = int(os.getenv('ROFL_TOPUP_COUNT', 1))
+delay = int(os.getenv('DELAY', 10))
 
 def parse_secret_keys(secret_keys: list[str]) -> dict[str, tuple[str, str]]:
     sk_map = {}
@@ -118,8 +119,7 @@ def main():
             else:
                 print(f" Threshold {balance_threshold} not reached")
 
-            # Avoid quota limits.
-            time.sleep(10)
+            time.sleep(delay)
 
         for wrm in watch_rofl_machines:
             m = wrm.split(':', 1)
@@ -162,8 +162,7 @@ def main():
             else:
                 print(f" Threshold {rofl_threshold}s not reached")
 
-            # Avoid quota limits.
-            time.sleep(10)
+            time.sleep(delay)
 
 
 if __name__ == "__main__":
