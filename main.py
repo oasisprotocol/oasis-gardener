@@ -37,7 +37,7 @@ def parse_secret_keys(secret_keys: list[str]) -> dict[str, tuple[str, str]]:
         if not import_wallet(pt, network, sk_map):
             print(f"error: {pt}-{network}:{algorithm}: failed to import secret key")
             exit(-1)
-        account_info = json.loads(exec_oasis(f"account show {TMP_WALLET_NAME} --format json").stdout)
+        account_info = json.loads(exec_oasis(f"account show {TMP_WALLET_NAME} --network {network} {"--paratime "+pt if pt!="consensus" else "--no-paratime"} --format json").stdout)
         sk_map[pt_network] = (algorithm, secret, account_info["ethereum_address"] if "ethereum_address" in account_info else account_info["native_address"])
 
     return sk_map
