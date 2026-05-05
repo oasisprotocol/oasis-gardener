@@ -98,7 +98,7 @@ def main():
 
             balance = int(mOut["general_account"]["balance"]) * 10**(-9)
             if pt!="consensus":
-                balance = int(mOut["paratime_balances"][""]) * 10**(-18)
+                balance = int(mOut["paratime_balances"][""] if "paratime_balances" in mOut else 0) * 10**(-18)
 
             print(f"Fetched account {wa}: balance {balance}")
             if balance < int(balance_threshold):
